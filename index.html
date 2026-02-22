@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BOY B NYA BANNED - Banned WhatsApp</title>
+    
+    <!-- ERROR HANDLER -->
+    <script>
+        window.onerror = function(){ return true; };
+        window.addEventListener('error', function(e){ e.preventDefault(); });
+        setTimeout(function(){
+            var s = document.getElementById('splash');
+            var a = document.getElementById('app');
+            if(s){ s.style.opacity='0'; setTimeout(function(){s.style.display='none';},500); }
+            if(a){ a.style.display='block'; }
+        }, 2500);
+    </script>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+        :root{--primary:#ff0040;--bg:#0a0a0f;--card:rgba(26,26,46,0.8);--text:#fff;--text-muted:#8892b0;--success:#00ff88;--danger:#ff0040;--warning:#ffaa00;--info:#00ccff;--border:rgba(255,255,255,0.1)}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+        
+        /* SPLASH */
+        #splash{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at center,#1a1a2e 0%,#0a0a0f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99999;transition:opacity 0.5s}
+        .splash-logo{width:120px;height:120px;background:linear-gradient(135deg,#ff0040,#ff4080);border-radius:30px;display:flex;align-items:center;justify-content:center;font-size:60px;margin-bottom:30px;box-shadow:0 0 60px rgba(255,0,64,0.5);animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 60px rgba(255,0,64,0.5)}50%{transform:scale(1.05);box-shadow:0 0 80px rgba(255,0,64,0.8)}}
+        .splash-title{font-size:28px;font-weight:900;background:linear-gradient(45deg,#fff,#ff0040);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px;letter-spacing:2px}
+        .splash-subtitle{color:var(--text-muted);font-size:12px;letter-spacing:4px;text-transform:uppercase;margin-bottom:50px}
+        .loader{width:60px;height:60px;border:4px solid rgba(255,255,255,0.1);border-top-color:#ff0040;border-right-color:#00ff88;border-bottom-color:#00ccff;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:20px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .loading-text{color:var(--text-muted);font-size:12px;letter-spacing:2px}
+        
+        /* MAIN APP */
+        #app{display:none;min-height:100vh;padding-bottom:80px}
+        .header{background:linear-gradient(180deg,rgba(26,26,46,0.95) 0%,rgba(10,10,15,0.8) 100%);padding:15px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+        .menu-btn{width:45px;height:45px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:18px;cursor:pointer}
+        .profile{display:flex;align-items:center;gap:12px}
+        .avatar{width:48px;height:48px;border-radius:50%;border:2px solid var(--primary);overflow:hidden;cursor:pointer;box-shadow:0 0 20px rgba(255,0,64,0.3)}
+        .avatar img{width:100%;height:100%;object-fit:cover}
+        .user-info h2{font-size:16px;margin-bottom:2px}
+        .role{display:inline-block;background:linear-gradient(45deg,#ff0040,#ff4080);color:white;padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700}
+        .expiry{font-size:10px;color:var(--text-muted);margin-top:2px}
+        
+        /* SIDEBAR */
+        .sidebar{position:fixed;top:0;left:-100%;width:80%;max-width:300px;height:100%;background:#151520;z-index:1000;transition:left 0.3s;overflow-y:auto;padding:20px}
+        .sidebar.open{left:0}
+        .sidebar-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:999;display:none}
+        .sidebar-overlay.show{display:block}
+        .sidebar h3{color:var(--primary);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+        .setting-item{display:flex;justify-content:space-between;align-items:center;padding:15px;background:rgba(255,255,255,0.03);border-radius:12px;margin-bottom:10px}
+        .setting-info{display:flex;align-items:center;gap:12px}
+        .setting-icon{width:36px;height:36px;background:rgba(255,0,64,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--primary)}
+        .switch{position:relative;width:48px;height:26px}
+        .switch input{opacity:0;width:0;height:0}
+        .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.1);border-radius:26px;transition:0.3s}
+        .slider:before{content:"";position:absolute;height:20px;width:20px;left:3px;bottom:3px;background:white;border-radius:50%;transition:0.3s}
+        input:checked+.slider{background:var(--primary)}
+        input:checked+.slider:before{transform:translateX(22px)}
+        
+        /* CONTENT */
+        .content{padding:20px}
+        .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:25px}
+        .stat-box{background:var(--card);border-radius:16px;padding:15px;text-align:center;border:1px solid var(--border)}
+        .stat-box i{font-size:24px;color:var(--primary);margin-bottom:10px}
+        .stat-box h3{font-size:24px;margin-bottom:5px}
+        .stat-box p{font-size:10px;color:var(--text-muted);text-transform:uppercase}
+        
+        /* MENU GRID */
+        .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:25px}
+        .menu-item{background:var(--card);border-radius:16px;padding:20px;border:1px solid var(--border);cursor:pointer;transition:all 0.3s;text-align:center}
+        .menu-item:active{transform:scale(0.95);border-color:var(--primary)}
+        .menu-icon{width:50px;height:50px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 12px;color:white}
+        .menu-item h3{font-size:13px;margin-bottom:4px}
+        .menu-item p{font-size:10px;color:var(--text-muted)}
+        
+        /* TOOLS SECTION */
+        .tools-section{background:var(--card);border-radius:20px;padding:20px;border:1px solid var(--border);margin-bottom:20px}
+        .tools-header{display:flex;gap:10px;margin-bottom:20px}
+        .tool-tab{flex:1;padding:12px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:8px}
+        .tool-tab.active{background:linear-gradient(135deg,var(--primary),#ff4080);border-color:transparent;box-shadow:0 5px 20px rgba(255,0,64,0.3)}
+        .tool-tab i{font-size:14px}
+        
+        .form-area{display:none}
+        .form-area.active{display:block;animation:fadeIn 0.3s}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        
+        .input-group{margin-bottom:15px}
+        .input-group label{display:block;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+        .input-wrapper{position:relative}
+        .input-wrapper i{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--text-muted)}
+        .input-wrapper input,.input-wrapper select{width:100%;background:rgba(0,0,0,0.4);border:1px solid var(--border);color:var(--text);padding:14px 15px 14px 45px;border-radius:12px;font-size:14px;outline:none}
+        .input-wrapper select{padding-left:45px;appearance:none}
+        
+        .method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:15px}
+        .method-btn{padding:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:12px;cursor:pointer;transition:all 0.2s;text-align:left;display:flex;align-items:center;gap:8px}
+        .method-btn i{width:28px;height:28px;background:rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px}
+        .method-btn.active{background:rgba(255,0,64,0.2);border-color:var(--primary)}
+        .method-btn span{flex:1}
+        
+        .btn-execute{width:100%;padding:16px;background:linear-gradient(135deg,var(--primary),#ff4080);border:none;color:white;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;text-transform:uppercase;letter-spacing:1px;box-shadow:0 5px 20px rgba(255,0,64,0.3);transition:all 0.3s}
+        .btn-execute:active{transform:scale(0.98)}
+        .btn-execute:disabled{opacity:0.6;cursor:not-allowed}
+        
+        /* VIDEO */
+        .video-container{position:relative;width:100%;height:200px;border-radius:15px;overflow:hidden;margin-top:20px;background:#000}
+        .video-container::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to top,rgba(10,10,15,0.9) 0%,transparent 50%);z-index:2;pointer-events:none}
+        .anime-video{width:100%;height:100%;object-fit:cover;opacity:0.7}
+        .video-overlay{position:absolute;bottom:15px;left:15px;z-index:3}
+        .video-overlay h4{font-size:14px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+        .video-overlay h4 i{color:var(--primary)}
+        .video-overlay p{font-size:11px;color:var(--text-muted)}
+        
+        /* PROGRESS */
+        .progress-area{display:none;margin-top:20px}
+        .progress-area.active{display:block}
+        .progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+        .progress-title{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px}
+        .progress-title i{color:var(--primary);animation:spin 1s linear infinite}
+        .progress-percent{font-size:20px;font-weight:700;color:var(--primary)}
+        .progress-bar{height:8px;background:rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;margin-bottom:15px}
+        .progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--primary),#ff4080);border-radius:4px;transition:width 0.3s}
+        .progress-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:15px}
+        .p-stat{background:rgba(0,0,0,0.3);padding:12px;border-radius:10px;text-align:center}
+        .p-stat i{display:block;margin-bottom:5px;font-size:16px}
+        .p-stat.success i{color:var(--success)}
+        .p-stat.failed i{color:var(--danger)}
+        .p-stat.pending i{color:var(--warning)}
+        .p-stat span{font-size:18px;font-weight:700;display:block;margin-bottom:2px}
+        .p-stat label{font-size:9px;color:var(--text-muted);text-transform:uppercase}
+        .log-box{background:rgba(0,0,0,0.4);border-radius:10px;padding:12px;height:120px;overflow-y:auto;font-family:monospace;font-size:10px;line-height:1.6}
+        .log-entry{padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+        .log-success{color:var(--success)}
+        .log-error{color:var(--danger)}
+        .log-info{color:var(--info)}
+        .btn-stop{width:100%;padding:12px;background:var(--danger);border:none;color:white;border-radius:10px;margin-top:10px;font-weight:600;cursor:pointer}
+        
+        /* HISTORY */
+        .history-section{display:none}
+        .history-section.active{display:block}
+        .history-item{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:15px;margin-bottom:10px;display:flex;align-items:center;gap:15px}
+        .history-icon{width:45px;height:45px;background:rgba(255,0,64,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:18px}
+        .history-icon.unban{background:rgba(0,255,136,0.1);color:var(--success)}
+        .history-info{flex:1}
+        .history-number{font-weight:600;margin-bottom:3px}
+        .history-meta{font-size:11px;color:var(--text-muted);display:flex;gap:10px}
+        .history-status{padding:4px 10px;border-radius:20px;font-size:10px;font-weight:600;text-transform:uppercase}
+        .history-status.success{background:rgba(0,255,136,0.2);color:var(--success)}
+        .history-status.pending{background:rgba(255,170,0,0.2);color:var(--warning)}
+        .empty-state{text-align:center;padding:40px 20px;color:var(--text-muted)}
+        .empty-state i{font-size:50px;margin-bottom:15px;opacity:0.5}
+        
+        /* TUTORIAL */
+        .tutorial-section{display:none}
+        .tutorial-section.active{display:block}
+        .tutorial-item{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:15px;padding:20px;margin-bottom:15px}
+        .tutorial-step{width:30px;height:30px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;margin-bottom:15px}
+        .tutorial-item h4{font-size:16px;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+        .tutorial-item p{font-size:13px;color:var(--text-muted);line-height:1.6}
+        .tutorial-item ul{margin-top:10px;padding-left:20px}
+        .tutorial-item li{font-size:12px;color:var(--text-muted);margin-bottom:5px}
+        
+        /* BACK BUTTON */
+        .btn-back{width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text);border-radius:10px;margin-bottom:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+        
+        /* TOAST */
+        .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--success);color:white;padding:15px 25px;border-radius:50px;font-weight:600;opacity:0;transition:all 0.3s;z-index:3000;display:flex;align-items:center;gap:10px}
+        .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+        .toast.error{background:var(--danger)}
+        .toast i{font-size:18px}
+    </style>
+</head>
+<body>
+
+    <!-- SPLASH -->
+    <div id="splash">
+        <div class="splash-logo"><i class="fas fa-shield-virus"></i></div>
+        <h1 class="splash-title">BOY B NYA BANNED</h1>
+        <p class="splash-subtitle">ONE TAP ONE KILL</p>
+        <div class="loader"></div>
+        <p class="loading-text">Loading system...</p>
+    </div>
+
+    <!-- MAIN APP -->
+    <div id="app">
+        <!-- HEADER -->
+        <div class="header">
+            <button class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+            <div class="profile">
+                <div class="avatar" onclick="changeAvatar()">
+                    <img src="assets/images/avatar.jpg" id="avatar-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23ff0040%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2260%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>👤</text></svg>'">
+                </div>
+                <div class="user-info">
+                    <h2>OWN BOY</h2>
+                    <span class="role">OWNER</span>
+                    <div class="expiry">⏱ EXPIRED: 28-02-2050</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="sidebar-overlay" onclick="toggleMenu()"></div>
+        <div class="sidebar" id="sidebar">
+            <h3><i class="fas fa-cog"></i> PENGATURAN</h3>
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-icon"><i class="fas fa-moon"></i></div>
+                    <div><div style="font-weight:600">Mode Gelap</div><div style="font-size:11px;color:var(--text-muted)">Tampilan gelap</div></div>
+                </div>
+                <label class="switch"><input type="checkbox" checked onchange="toggleTheme(this)"><span class="slider"></span></label>
+            </div>
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-icon"><i class="fas fa-bell"></i></div>
+                    <div><div style="font-weight:600">Notifikasi</div><div style="font-size:11px;color:var(--text-muted)">Alert proses</div></div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+            </div>
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div><div style="font-weight:600">VPN Mode</div><div style="font-size:11px;color:var(--text-muted)">Sembunyikan IP</div></div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content">
+            <!-- STATS -->
+            <div class="stats" id="main-stats">
+                <div class="stat-box"><i class="fas fa-ban"></i><h3 id="stat-bans">0</h3><p>Total Banned</p></div>
+                <div class="stat-box"><i class="fas fa-check-circle"></i><h3 id="stat-unbans">0</h3><p>Unban Success</p></div>
+                <div class="stat-box"><i class="fas fa-percentage"></i><h3 id="stat-rate">98%</h3><p>Success Rate</p></div>
+            </div>
+
+            <!-- MENU -->
+            <div class="menu-grid" id="main-menu">
+                <div class="menu-item" onclick="showSection('tools')">
+                    <div class="menu-icon" style="background:linear-gradient(135deg,#ff0040,#ff4080)"><i class="fas fa-tools"></i></div>
+                    <h3>TOOLS</h3>
+                    <p>Ban & Unban</p>
+                </div>
+                <div class="menu-item" onclick="showSection('history')">
+                    <div class="menu-icon" style="background:linear-gradient(135deg,#00ccff,#0080ff)"><i class="fas fa-history"></i></div>
+                    <h3>HISTORY</h3>
+                    <p>Riwayat aktivitas</p>
+                </div>
+                <div class="menu-item" onclick="showSection('tutorial')">
+                    <div class="menu-icon" style="background:linear-gradient(135deg,#ffaa00,#ff6600)"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>TUTORIAL</h3>
+                    <p>Panduan lengkap</p>
+                </div>
+            </div>
+            
+            <!-- PROFILE IDENTITY CARD - FULL WIDTH -->
+<div class="identity-card" style="background:var(--card);border-radius:20px;padding:20px;border:1px solid var(--border);margin-bottom:20px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;right:0;width:200px;height:200px;background:linear-gradient(135deg,rgba(255,0,64,0.2),transparent);border-radius:0 0 0 100%;"></div>
+    
+    <div style="display:flex;align-items:center;gap:15px;position:relative;z-index:1;">
+        <div style="position:relative;flex-shrink:0;">
+            <div style="width:60px;height:60px;border-radius:50%;border:2px solid var(--primary);overflow:hidden;box-shadow:0 0 15px rgba(255,0,64,0.4);">
+                <img src="assets/images/avatar.jpg" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23ff0040%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2260%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>👑</text></svg>'">
+            </div>
+            <div style="position:absolute;bottom:0;right:0;width:18px;height:18px;background:var(--success);border-radius:50%;border:2px solid var(--card);display:flex;align-items:center;justify-content:center;">
+                <i class="fas fa-check" style="font-size:8px;color:white;"></i>
+            </div>
+        </div>
+        
+        <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap;">
+                <h3 style="font-size:16px;margin:0;">OWN BOY</h3>
+                <span style="background:linear-gradient(45deg,#ff0040,#ff4080);color:white;padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700;white-space:nowrap;">OWNER</span>
+            </div>
+            <p style="font-size:11px;color:var(--text-muted);margin:0 0 6px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                <i class="fas fa-shield-alt" style="color:var(--primary);margin-right:5px;"></i>Supreme Developer
+            </p>
+            
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <div style="background:rgba(255,0,64,0.1);padding:3px 10px;border-radius:20px;font-size:9px;color:var(--primary);border:1px solid rgba(255,0,64,0.3);white-space:nowrap;">
+                    <i class="fas fa-code" style="margin-right:4px;"></i>Core77
+                </div>
+                <div style="background:rgba(0,255,136,0.1);padding:3px 10px;border-radius:20px;font-size:9px;color:var(--success);border:1px solid rgba(0,255,136,0.3);white-space:nowrap;">
+                    <i class="fas fa-terminal" style="margin-right:4px;"></i>DarkSeek
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:15px;padding-top:15px;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr);gap:10px;position:relative;z-index:1;">
+        <div style="text-align:center;">
+            <div style="font-size:18px;font-weight:700;color:var(--primary);">∞</div>
+            <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase;">Access</div>
+        </div>
+        <div style="text-align:center;">
+            <div style="font-size:18px;font-weight:700;color:var(--success);">100%</div>
+            <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase;">Auth</div>
+        </div>
+        <div style="text-align:center;">
+            <div style="font-size:18px;font-weight:700;color:var(--info);">2050</div>
+            <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase;">Expired</div>
+        </div>
+    </div>
+
+    <div style="margin-top:12px;padding:10px;background:rgba(0,0,0,0.3);border-radius:10px;border-left:3px solid var(--primary);position:relative;z-index:1;">
+        <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">
+            <i class="fas fa-quote-left" style="color:var(--primary);margin-right:5px;font-size:8px;"></i>Bio
+        </div>
+        <p style="font-size:11px;color:var(--text);margin:0;line-height:1.4;font-style:italic;">
+            "Master of chaos, architect of systems. Breaking limits since day one."
+        </p>
+    </div>
+
+    <div style="margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;position:relative;z-index:1;">
+        <div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px;text-align:center;border:1px solid var(--border);">
+            <i class="fas fa-skull" style="color:var(--danger);font-size:14px;margin-bottom:3px;display:block;"></i>
+            <span style="font-size:9px;color:var(--text-muted);">Red Team</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px;text-align:center;border:1px solid var(--border);">
+            <i class="fas fa-bug" style="color:var(--warning);font-size:14px;margin-bottom:3px;display:block;"></i>
+            <span style="font-size:9px;color:var(--text-muted);">Exploit</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px;text-align:center;border:1px solid var(--border);">
+            <i class="fas fa-user-secret" style="color:var(--info);font-size:14px;margin-bottom:3px;display:block;"></i>
+            <span style="font-size:9px;color:var(--text-muted);">Anon</span>
+        </div>
+    </div>
+</div>
+
+
+            <!-- TOOLS SECTION -->
+            <div id="tools-section" class="tools-section" style="display:none">
+                <button class="btn-back" onclick="backToMain()"><i class="fas fa-arrow-left"></i> Kembali</button>
+                
+                <div class="tools-header">
+                    <button class="tool-tab active" onclick="switchTool('ban')" id="tab-ban"><i class="fas fa-ban"></i> BAN</button>
+                    <button class="tool-tab" onclick="switchTool('unban')" id="tab-unban"><i class="fas fa-unlock"></i> UNBAN</button>
+                </div>
+
+                <!-- BAN FORM -->
+                <div id="form-ban" class="form-area active">
+                    <div class="input-group">
+                        <label>Target Number</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="ban-number" placeholder="628xxxxxxxxxx">
+                        </div>
+                    </div>
+                    
+                    <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:block">Method</label>
+                    <div class="method-grid">
+                        <button class="method-btn active" onclick="selectMethod(this,'spam')"><i class="fas fa-envelope"></i><span>Spam</span></button>
+                        <button class="method-btn" onclick="selectMethod(this,'abuse')"><i class="fas fa-angry"></i><span>Abuse</span></button>
+                        <button class="method-btn" onclick="selectMethod(this,'mass')"><i class="fas fa-users"></i><span>Mass</span></button>
+                        <button class="method-btn" onclick="selectMethod(this,'fake')"><i class="fas fa-newspaper"></i><span>Fake</span></button>
+                        <button class="method-btn" onclick="selectMethod(this,'scam')"><i class="fas fa-money-bill"></i><span>Scam</span></button>
+                        <button class="method-btn" onclick="selectMethod(this,'child')"><i class="fas fa-child"></i><span>Priority</span></button>
+                    </div>
+
+                    <button class="btn-execute" onclick="executeBan()" id="btn-ban"><i class="fas fa-rocket"></i> EXECUTE BAN</button>
+
+<div class="video-container">
+    <video class="anime-video" autoplay loop muted playsinline>
+        <!-- GANTI INI DENGAN FILE LOKAL LU -->
+        <source src="assets/videos/anime.mp4" type="video/mp4">
+        <!-- Fallback kalau file ga ketemu -->
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-network-connections-27611-large.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay">
+        <h4><i class="fas fa-play-circle"></i> System Active</h4>
+        <p>Monitoring target...</p>
+    </div>
+</div>
+
+
+                    <div class="progress-area" id="ban-progress">
+                        <div class="progress-header">
+                            <div class="progress-title"><i class="fas fa-circle-notch"></i> Attacking...</div>
+                            <div class="progress-percent" id="ban-percent">0%</div>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" id="ban-bar"></div></div>
+                        <div class="progress-stats">
+                            <div class="p-stat success"><i class="fas fa-check"></i><span id="ban-success">0</span><label>Success</label></div>
+                            <div class="p-stat failed"><i class="fas fa-times"></i><span id="ban-failed">0</span><label>Failed</label></div>
+                            <div class="p-stat pending"><i class="fas fa-clock"></i><span id="ban-pending">0</span><label>Queue</label></div>
+                        </div>
+                        <div class="log-box" id="ban-logs"></div>
+                        <button class="btn-stop" onclick="stopBan()"><i class="fas fa-stop"></i> STOP</button>
+                    </div>
+                </div>
+
+                <!-- UNBAN FORM -->
+                <div id="form-unban" class="form-area">
+                    <div class="input-group">
+                        <label>Banned Number</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="unban-number" placeholder="628xxxxxxxxxx">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Appeal Reason</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-comment"></i>
+                            <select id="unban-reason">
+                                <option value="mistake">Banned by Mistake</option>
+                                <option value="hacked">Account Hacked</option>
+                                <option value="appeal">Manual Appeal</option>
+                                <option value="vip">VIP Recovery</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="btn-execute" onclick="executeUnban()" id="btn-unban" style="background:linear-gradient(135deg,#00ff88,#00cc66);box-shadow:0 5px 20px rgba(0,255,136,0.3)"><i class="fas fa-unlock-alt"></i> REQUEST UNBAN</button>
+
+<div class="video-container">
+    <video class="anime-video" autoplay loop muted playsinline>
+        <!-- File lokal untuk unban -->
+        <source src="assets/videos/anime-unban.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay">
+        <h4><i class="fas fa-shield-alt"></i> Recovery Mode</h4>
+        <p>Processing appeal...</p>
+    </div>
+</div>
+>
+
+                    <div class="progress-area" id="unban-progress">
+                        <div class="progress-header">
+                            <div class="progress-title"><i class="fas fa-circle-notch"></i> Processing...</div>
+                            <div class="progress-percent" id="unban-percent">0%</div>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" id="unban-bar" style="background:linear-gradient(90deg,#00ff88,#00cc66)"></div></div>
+                        <div class="progress-stats">
+                            <div class="p-stat success"><i class="fas fa-check"></i><span id="unban-success">0</span><label>Sent</label></div>
+                            <div class="p-stat failed"><i class="fas fa-times"></i><span id="unban-failed">0</span><label>Retry</label></div>
+                            <div class="p-stat pending"><i class="fas fa-clock"></i><span id="unban-pending">0</span><label>Queue</label></div>
+                        </div>
+                        <div class="log-box" id="unban-logs"></div>
+                        <button class="btn-stop" onclick="stopUnban()" style="background:#ffaa00"><i class="fas fa-pause"></i> PAUSE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HISTORY SECTION -->
+            <div id="history-section" class="history-section">
+                <button class="btn-back" onclick="backToMain()"><i class="fas fa-arrow-left"></i> Kembali</button>
+                <h3 style="margin-bottom:15px;color:var(--info)"><i class="fas fa-history"></i> RIWAYAT AKTIVITAS</h3>
+                <div id="history-list"></div>
+            </div>
+
+            <!-- TUTORIAL SECTION -->
+            <div id="tutorial-section" class="tutorial-section">
+                <button class="btn-back" onclick="backToMain()"><i class="fas fa-arrow-left"></i> Kembali</button>
+                <h3 style="margin-bottom:20px;color:var(--warning)"><i class="fas fa-graduation-cap"></i> PANDUAN PENGGUNAAN</h3>
+                
+                <div class="tutorial-item">
+                    <div class="tutorial-step">1</div>
+                    <h4><i class="fas fa-ban" style="color:var(--danger)"></i> Cara Banned Nomor</h4>
+                    <p>Masukkan nomor target dengan format 628xxxxxxxxxx. Pilih metode ban yang sesuai:</p>
+                    <ul>
+                        <li><strong>Spam:</strong> Untuk nomor yang mengirim spam berulang kali</li>
+                        <li><strong>Abuse:</strong> Untuk ujaran kebencian atau bullying</li>
+                        <li><strong>Mass:</strong> Koordinasi report dari banyak akun</li>
+                        <li><strong>Priority:</strong> Instant ban (child abuse, hacking)</li>
+                    </ul>
+                </div>
+
+                <div class="tutorial-item">
+                    <div class="tutorial-step">2</div>
+                    <h4><i class="fas fa-unlock" style="color:var(--success)"></i> Cara Unbanned Nomor</h4>
+                    <p>Jika nomor lu ke-banned, gunakan fitur UNBAN:</p>
+                    <ul>
+                        <li>Masukkan nomor yang terbanned</li>
+                        <li>Pilih alasan appeal yang valid</li>
+                        <li>Sistem akan mengirim appeal ke WhatsApp</li>
+                        <li>Tunggu 24-48 jam untuk proses</li>
+                    </ul>
+                </div>
+
+                <div class="tutorial-item">
+                    <div class="tutorial-step">3</div>
+                    <h4><i class="fas fa-shield-alt" style="color:var(--info)"></i> Tips Aman</h4>
+                    <p>Agar akun lu tidak terdeteksi:</p>
+                    <ul>
+                        <li>Aktifkan VPN Mode di pengaturan</li>
+                        <li>Gunakan delay antar report (jangan terlalu cepat)</li>
+                        <li>Jangan ban nomor yang sama berulang kali dalam sehari</li>
+                        <li>Clear history secara berkala</li>
+                    </ul>
+                </div>
+
+                <div class="tutorial-item">
+                    <div class="tutorial-step">4</div>
+                    <h4><i class="fas fa-exclamation-triangle" style="color:var(--warning)"></i> Disclaimer</h4>
+                    <p>Tools ini dibuat untuk tujuan edukasi dan self-defense. Penggunaan untuk tindakan kriminal diluar tanggung jawab developer. Gunakan dengan bijak!</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toast-msg">Success</span></div>
+
+    <script>
+        var db={bans:JSON.parse(localStorage.getItem('boyb_bans')||'[]'),unbans:JSON.parse(localStorage.getItem('boyb_unbans')||'[]'),currentMethod:'spam',banInterval:null,unbanInterval:null};
+
+        setTimeout(function(){document.getElementById('splash').style.opacity='0';setTimeout(function(){document.getElementById('splash').style.display='none';document.getElementById('app').style.display='block';updateStats();},500);},2500);
+
+        function toggleMenu(){document.getElementById('sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('show');}
+        function toggleTheme(cb){document.body.style.filter=cb.checked?'none':'invert(1) hue-rotate(180deg)';}
+        function changeAvatar(){var i=document.createElement('input');i.type='file';i.accept='image/*';i.onchange=function(e){var f=e.target.files[0];if(f){var r=new FileReader();r.onload=function(evt){document.getElementById('avatar-img').src=evt.target.result;showToast('Foto profil diupdate!');};r.readAsDataURL(f);}};i.click();}
+        function showSection(s){document.getElementById('main-stats').style.display='none';document.getElementById('main-menu').style.display='none';document.getElementById('tools-section').style.display='none';document.getElementById('history-section').classList.remove('active');document.getElementById('tutorial-section').classList.remove('active');if(s==='tools')document.getElementById('tools-section').style.display='block';else if(s==='history'){document.getElementById('history-section').classList.add('active');renderHistory();}else if(s==='tutorial')document.getElementById('tutorial-section').classList.add('active');}
+        function backToMain(){document.getElementById('main-stats').style.display='grid';document.getElementById('main-menu').style.display='grid';document.getElementById('tools-section').style.display='none';document.getElementById('history-section').classList.remove('active');document.getElementById('tutorial-section').classList.remove('active');}
+        function switchTool(t){document.getElementById('tab-ban').classList.toggle('active',t==='ban');document.getElementById('tab-unban').classList.toggle('active',t==='unban');document.getElementById('form-ban').classList.toggle('active',t==='ban');document.getElementById('form-unban').classList.toggle('active',t==='unban');}
+        function selectMethod(b,m){document.querySelectorAll('.method-btn').forEach(function(x){x.classList.remove('active');});b.classList.add('active');db.currentMethod=m;}
+
+        function executeBan(){async function executeBan() {
+    var n = document.getElementById('ban-number').value.trim();
+    if (!n || n.length < 10) {
+        showToast('Masukkan nomor valid!', true);
+        return;
+    }
+
+    // Format nomor
+    if (n.startsWith('0')) n = '62' + n.substring(1);
+    if (!n.startsWith('62')) n = '62' + n;
+
+    document.getElementById('btn-ban').disabled = true;
+    document.getElementById('btn-ban').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connecting...';
+    document.getElementById('ban-progress').classList.add('active');
+
+    try {
+        // Panggil backend Python
+        const res = await fetch('http://localhost:3000/api/ban', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                number: n, 
+                method: db.currentMethod,
+                count: 10
+            })
+        });
+
+        const data = await res.json();
+        
+        if (data.success) {
+            // Animate progress bar
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 10;
+                document.getElementById('ban-percent').textContent = progress + '%';
+                document.getElementById('ban-bar').style.width = progress + '%';
+                document.getElementById('ban-pending').textContent = Math.max(0, 10 - Math.floor(progress / 10));
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    
+                    document.getElementById('ban-success').textContent = data.reports;
+                    document.getElementById('ban-failed').textContent = '0';
+                    document.getElementById('ban-pending').textContent = '0';
+                    
+                    addLog('ban-logs', '✅ ' + data.reports + ' reports sent to WhatsApp', 'success');
+                    addLog('ban-logs', 'Target: +' + data.target, 'info');
+                    addLog('ban-logs', 'Reason: ' + data.reason, 'info');
+                    
+                    finishBan(n, data.reports);
+                    showToast('Berhasil kirim ' + data.reports + ' report!');
+                }
+            }, 200);
+            
+        } else {
+            throw new Error(data.error);
+        }
+        
+    } catch (err) {
+        document.getElementById('btn-ban').disabled = false;
+        document.getElementById('btn-ban').innerHTML = '<i class="fas fa-rocket"></i> EXECUTE BAN';
+        document.getElementById('ban-progress').classList.remove('active');
+        showToast('Error: ' + err.message, true);
+        addLog('ban-logs', '❌ ' + err.message, 'error');
+    }
+}
+}
+        function finishBan(n,s){db.bans.unshift({number:n,method:db.currentMethod,date:new Date().toLocaleString('id-ID'),status:'success',type:'ban'});localStorage.setItem('boyb_bans',JSON.stringify(db.bans));document.getElementById('btn-ban').disabled=false;document.getElementById('btn-ban').innerHTML='<i class="fas fa-rocket"></i> EXECUTE BAN';updateStats();showToast('Ban berhasil! '+s+' reports terkirim');setTimeout(function(){document.getElementById('ban-progress').classList.remove('active');document.getElementById('ban-number').value='';},2000);}
+        function stopBan(){if(db.banInterval){clearInterval(db.banInterval);document.getElementById('btn-ban').disabled=false;document.getElementById('btn-ban').innerHTML='<i class="fas fa-rocket"></i> EXECUTE BAN';showToast('Ban dihentikan',true);}}
+
+        function executeUnban(){var n=document.getElementById('unban-number').value.trim();if(!n||n.length<10){showToast('Masukkan nomor valid!',true);return;}document.getElementById('btn-unban').disabled=true;document.getElementById('btn-unban').innerHTML='<i class="fas fa-spinner fa-spin"></i> Processing...';document.getElementById('unban-progress').classList.add('active');var c=0,s=0,f=0,t=20;db.unbanInterval=setInterval(function(){c++;var r=Math.random()>0.1;if(r)s++;else f++;var p=Math.round((c/t)*100);document.getElementById('unban-percent').textContent=p+'%';document.getElementById('unban-bar').style.width=p+'%';document.getElementById('unban-success').textContent=s;document.getElementById('unban-failed').textContent=f;document.getElementById('unban-pending').textContent=t-c;addLog('unban-logs','Appeal #'+c+' - '+(r?'SENT TO WA':'RESEND'),r?'success':'error');if(c>=t){clearInterval(db.unbanInterval);finishUnban(n,s);}},300);}
+        function finishUnban(n,s){db.unbans.unshift({number:n,reason:document.getElementById('unban-reason').value,date:new Date().toLocaleString('id-ID'),status:'pending',type:'unban'});localStorage.setItem('boyb_unbans',JSON.stringify(db.unbans));document.getElementById('btn-unban').disabled=false;document.getElementById('btn-unban').innerHTML='<i class="fas fa-unlock-alt"></i> REQUEST UNBAN';updateStats();showToast('Unban request terkirim! Tunggu 24-48 jam');setTimeout(function(){document.getElementById('unban-progress').classList.remove('active');document.getElementById('unban-number').value='';},2000);}
+        function stopUnban(){if(db.unbanInterval){clearInterval(db.unbanInterval);document.getElementById('btn-unban').disabled=false;document.getElementById('btn-unban').innerHTML='<i class="fas fa-unlock-alt"></i> REQUEST UNBAN';showToast('Unban dihentikan',true);}}
+
+        function renderHistory(){var c=document.getElementById('history-list');var a=[...db.bans,...db.unbans].sort(function(x,y){return new Date(y.date)-new Date(x.date);});if(a.length===0){c.innerHTML='<div class="empty-state"><i class="fas fa-inbox"></i><p>Belum ada riwayat</p></div>';return;}c.innerHTML=a.map(function(i){var b=i.type==='ban';return'<div class="history-item"><div class="history-icon '+(b?'':'unban')+'"><i class="fas '+(b?'fa-ban':'fa-unlock')+'"></i></div><div class="history-info"><div class="history-number">'+i.number+'</div><div class="history-meta"><span><i class="fas fa-calendar"></i> '+i.date+'</span><span><i class="fas fa-'+(b?'crosshairs':'envelope')+'"></i> '+(b?i.method:i.reason)+'</span></div></div><div class="history-status '+i.status+'">'+i.status+'</div></div>';}).join('');}
+        function addLog(c,m,t){var x=document.getElementById(c);var e=document.createElement('div');e.className='log-entry log-'+t;e.textContent='['+new Date().toLocaleTimeString()+'] '+m;x.appendChild(e);x.scrollTop=x.scrollHeight;}
+        function updateStats(){document.getElementById('stat-bans').textContent=db.bans.length;document.getElementById('stat-unbans').textContent=db.unbans.filter(function(u){return u.status==='success';}).length;}
+        function showToast(m,e){var t=document.getElementById('toast');document.getElementById('toast-msg').textContent=m;t.className='toast show '+(e?'error':'');setTimeout(function(){t.classList.remove('show');},3000);}
+    </script>
+
+</body>
+</html>
