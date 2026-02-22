@@ -1,0 +1,24 @@
+.menu-item .badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+.badge.new { background: #00ff9d; }
+.badge.hot { background: #ff0040; animation: pulse 1.5s infinite; }
+.badge.urgent { background: #ff6b00; }
+.badge.warning { background: #ffcc00; color: #000; }
+.badge.new, .badge.hot, .badge.urgent, .badge.warning {
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}

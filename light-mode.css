@@ -1,0 +1,22 @@
+/* Light Mode Styles - BOY B NYA BANNED */
+
+body.light-mode,
+body:not(.dark-mode) {
+    --bg: #f0f2f5;
+    --card: rgba(255, 255, 255, 0.9);
+    --text: #1a1a2e;
+    --text-muted: #65676b;
+    --border: rgba(0, 0, 0, 0.1);
+    --secondary: #ffffff;
+}
+
+body.light-mode .main-header,
+body.light-mode .sidebar {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+body.light-mode .menu-card,
+body.light-mode .stat-card {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
