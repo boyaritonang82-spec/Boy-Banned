@@ -5,25 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BOY B NYA BANNED - Banned WhatsApp</title>
     
-    <!-- ERROR HANDLER -->
-    <script>
-        window.onerror = function(){ return true; };
-        window.addEventListener('error', function(e){ e.preventDefault(); });
-        setTimeout(function(){
-            var s = document.getElementById('splash');
-            var a = document.getElementById('app');
-            if(s){ s.style.opacity='0'; setTimeout(function(){s.style.display='none';},500); }
-            if(a){ a.style.display='block'; }
-        }, 2500);
-    </script>
-    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
         :root{--primary:#ff0040;--bg:#0a0a0f;--card:rgba(26,26,46,0.8);--text:#fff;--text-muted:#8892b0;--success:#00ff88;--danger:#ff0040;--warning:#ffaa00;--info:#00ccff;--border:rgba(255,255,255,0.1)}
         body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
         
-        /* SPLASH */
         #splash{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at center,#1a1a2e 0%,#0a0a0f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99999;transition:opacity 0.5s}
         .splash-logo{width:120px;height:120px;background:linear-gradient(135deg,#ff0040,#ff4080);border-radius:30px;display:flex;align-items:center;justify-content:center;font-size:60px;margin-bottom:30px;box-shadow:0 0 60px rgba(255,0,64,0.5);animation:pulse 2s infinite}
         @keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 60px rgba(255,0,64,0.5)}50%{transform:scale(1.05);box-shadow:0 0 80px rgba(255,0,64,0.8)}}
@@ -31,12 +18,10 @@
         .splash-subtitle{color:var(--text-muted);font-size:12px;letter-spacing:4px;text-transform:uppercase;margin-bottom:50px}
         .loader{width:60px;height:60px;border:4px solid rgba(255,255,255,0.1);border-top-color:#ff0040;border-right-color:#00ff88;border-bottom-color:#00ccff;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:20px}
         @keyframes spin{to{transform:rotate(360deg)}}
-        .loading-text{color:var(--text-muted);font-size:12px;letter-spacing:2px}
         
-        /* MAIN APP */
         #app{display:none;min-height:100vh;padding-bottom:80px}
         .header{background:linear-gradient(180deg,rgba(26,26,46,0.95) 0%,rgba(10,10,15,0.8) 100%);padding:15px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-        .menu-btn{width:45px;height:45px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:18px;cursor:pointer}
+        .menu-btn{width:45px;height:45px;background:rgba(255,255,255;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:18px;cursor:pointer}
         .profile{display:flex;align-items:center;gap:12px}
         .avatar{width:48px;height:48px;border-radius:50%;border:2px solid var(--primary);overflow:hidden;cursor:pointer;box-shadow:0 0 20px rgba(255,0,64,0.3)}
         .avatar img{width:100%;height:100%;object-fit:cover}
@@ -44,23 +29,6 @@
         .role{display:inline-block;background:linear-gradient(45deg,#ff0040,#ff4080);color:white;padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700}
         .expiry{font-size:10px;color:var(--text-muted);margin-top:2px}
         
-        /* SIDEBAR */
-        .sidebar{position:fixed;top:0;left:-100%;width:80%;max-width:300px;height:100%;background:#151520;z-index:1000;transition:left 0.3s;overflow-y:auto;padding:20px}
-        .sidebar.open{left:0}
-        .sidebar-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:999;display:none}
-        .sidebar-overlay.show{display:block}
-        .sidebar h3{color:var(--primary);margin-bottom:20px;display:flex;align-items:center;gap:10px}
-        .setting-item{display:flex;justify-content:space-between;align-items:center;padding:15px;background:rgba(255,255,255,0.03);border-radius:12px;margin-bottom:10px}
-        .setting-info{display:flex;align-items:center;gap:12px}
-        .setting-icon{width:36px;height:36px;background:rgba(255,0,64,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--primary)}
-        .switch{position:relative;width:48px;height:26px}
-        .switch input{opacity:0;width:0;height:0}
-        .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.1);border-radius:26px;transition:0.3s}
-        .slider:before{content:"";position:absolute;height:20px;width:20px;left:3px;bottom:3px;background:white;border-radius:50%;transition:0.3s}
-        input:checked+.slider{background:var(--primary)}
-        input:checked+.slider:before{transform:translateX(22px)}
-        
-        /* CONTENT */
         .content{padding:20px}
         .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:25px}
         .stat-box{background:var(--card);border-radius:16px;padding:15px;text-align:center;border:1px solid var(--border)}
@@ -68,7 +36,6 @@
         .stat-box h3{font-size:24px;margin-bottom:5px}
         .stat-box p{font-size:10px;color:var(--text-muted);text-transform:uppercase}
         
-        /* MENU GRID */
         .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:25px}
         .menu-item{background:var(--card);border-radius:16px;padding:20px;border:1px solid var(--border);cursor:pointer;transition:all 0.3s;text-align:center}
         .menu-item:active{transform:scale(0.95);border-color:var(--primary)}
@@ -76,13 +43,14 @@
         .menu-item h3{font-size:13px;margin-bottom:4px}
         .menu-item p{font-size:10px;color:var(--text-muted)}
         
+        /* IDENTITY CARD */
+        .identity-card{background:var(--card);border-radius:20px;padding:20px;border:1px solid var(--border);margin-bottom:20px;position:relative;overflow:hidden}
+        .identity-card::before{content:'';position:absolute;top:0;right:0;width:150px;height:150px;background:linear-gradient(135deg,rgba(255,0,64,0.2),transparent);border-radius:0 0 0 100%}
         
-        /* TOOLS SECTION */
         .tools-section{background:var(--card);border-radius:20px;padding:20px;border:1px solid var(--border);margin-bottom:20px}
         .tools-header{display:flex;gap:10px;margin-bottom:20px}
         .tool-tab{flex:1;padding:12px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:8px}
         .tool-tab.active{background:linear-gradient(135deg,var(--primary),#ff4080);border-color:transparent;box-shadow:0 5px 20px rgba(255,0,64,0.3)}
-        .tool-tab i{font-size:14px}
         
         .form-area{display:none}
         .form-area.active{display:block;animation:fadeIn 0.3s}
@@ -93,28 +61,15 @@
         .input-wrapper{position:relative}
         .input-wrapper i{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--text-muted)}
         .input-wrapper input,.input-wrapper select{width:100%;background:rgba(0,0,0,0.4);border:1px solid var(--border);color:var(--text);padding:14px 15px 14px 45px;border-radius:12px;font-size:14px;outline:none}
-        .input-wrapper select{padding-left:45px;appearance:none}
         
         .method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:15px}
         .method-btn{padding:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:12px;cursor:pointer;transition:all 0.2s;text-align:left;display:flex;align-items:center;gap:8px}
         .method-btn i{width:28px;height:28px;background:rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px}
         .method-btn.active{background:rgba(255,0,64,0.2);border-color:var(--primary)}
-        .method-btn span{flex:1}
         
-        .btn-{width:100%;padding:16px;background:linear-gradient(135deg,var(--primary),#ff4080);border:none;color:white;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;text-transform:uppercase;letter-spacing:1px;box-shadow:0 5px 20px rgba(255,0,64,0.3);transition:all 0.3s}
-        .btn-:active{transform:scale(0.98)}
-        .btn-:disabled{opacity:0.6;cursor:not-allowed}
+        .btn-execute{width:100%;padding:16px;background:linear-gradient(135deg,var(--primary),#ff4080);border:none;color:white;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;text-transform:uppercase;letter-spacing:1px;box-shadow:0 5px 20px rgba(255,0,64,0.3)}
+        .btn-execute:disabled{opacity:0.6;cursor:not-allowed}
         
-        /* VIDEO */
-        .video-container{position:relative;width:100%;height:200px;border-radius:15px;overflow:hidden;margin-top:20px;background:#000}
-        .video-container::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to top,rgba(10,10,15,0.9) 0%,transparent 50%);z-index:2;pointer-events:none}
-        .anime-video{width:100%;height:100%;object-fit:cover;opacity:0.7}
-        .video-overlay{position:absolute;bottom:15px;left:15px;z-index:3}
-        .video-overlay h4{font-size:14px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
-        .video-overlay h4 i{color:var(--primary)}
-        .video-overlay p{font-size:11px;color:var(--text-muted)}
-        
-        /* PROGRESS */
         .progress-area{display:none;margin-top:20px}
         .progress-area.active{display:block}
         .progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
@@ -136,46 +91,18 @@
         .log-success{color:var(--success)}
         .log-error{color:var(--danger)}
         .log-info{color:var(--info)}
-        .btn-stop{width:100%;padding:12px;background:var(--danger);border:none;color:white;border-radius:10px;margin-top:10px;font-weight:600;cursor:pointer}
         
-        /* HISTORY */
-        .history-section{display:none}
-        .history-section.active{display:block}
-        .history-item{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:15px;margin-bottom:10px;display:flex;align-items:center;gap:15px}
-        .history-icon{width:45px;height:45px;background:rgba(255,0,64,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:18px}
-        .history-icon.unban{background:rgba(0,255,136,0.1);color:var(--success)}
-        .history-info{flex:1}
-        .history-number{font-weight:600;margin-bottom:3px}
-        .history-meta{font-size:11px;color:var(--text-muted);display:flex;gap:10px}
-        .history-status{padding:4px 10px;border-radius:20px;font-size:10px;font-weight:600;text-transform:uppercase}
-        .history-status.success{background:rgba(0,255,136,0.2);color:var(--success)}
-        .history-status.pending{background:rgba(255,170,0,0.2);color:var(--warning)}
-        .empty-state{text-align:center;padding:40px 20px;color:var(--text-muted)}
-        .empty-state i{font-size:50px;margin-bottom:15px;opacity:0.5}
-        
-        /* TUTORIAL */
-        .tutorial-section{display:none}
-        .tutorial-section.active{display:block}
-        .tutorial-item{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:15px;padding:20px;margin-bottom:15px}
-        .tutorial-step{width:30px;height:30px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;margin-bottom:15px}
-        .tutorial-item h4{font-size:16px;margin-bottom:10px;display:flex;align-items:center;gap:10px}
-        .tutorial-item p{font-size:13px;color:var(--text-muted);line-height:1.6}
-        .tutorial-item ul{margin-top:10px;padding-left:20px}
-        .tutorial-item li{font-size:12px;color:var(--text-muted);margin-bottom:5px}
-        
-        /* BACK BUTTON */
         .btn-back{width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text);border-radius:10px;margin-bottom:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
         
-        /* TOAST */
+        .history-section,.tutorial-section{display:none}
+        .history-section.active,.tutorial-section.active{display:block}
+        
         .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--success);color:white;padding:15px 25px;border-radius:50px;font-weight:600;opacity:0;transition:all 0.3s;z-index:3000;display:flex;align-items:center;gap:10px}
         .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
         .toast.error{background:var(--danger)}
-        .toast i{font-size:18px}
     </style>
 </head>
 <body>
-
-    <!-- SPLASH -->
     <div id="splash">
         <div class="splash-logo"><i class="fas fa-shield-virus"></i></div>
         <h1 class="splash-title">BOY B NYA BANNED</h1>
@@ -184,14 +111,12 @@
         <p class="loading-text">Loading system...</p>
     </div>
 
-    <!-- MAIN APP -->
     <div id="app">
-        <!-- HEADER -->
         <div class="header">
-            <button class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+            <button class="menu-btn"><i class="fas fa-bars"></i></button>
             <div class="profile">
-                <div class="avatar" onclick="changeAvatar()">
-                    <img src="assets/images/avatar.jpg" id="avatar-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23ff0040%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2260%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>👤</text></svg>'">
+                <div class="avatar">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=OWNBOY" id="avatar-img">
                 </div>
                 <div class="user-info">
                     <h2>OWN BOY</h2>
@@ -201,120 +126,14 @@
             </div>
         </div>
 
-        <!-- SIDEBAR -->
-        <div class="sidebar-overlay" onclick="toggleMenu()"></div>
-        <div class="sidebar" id="sidebar">
-            <h3><i class="fas fa-cog"></i> PENGATURAN</h3>
-            <div class="setting-item">
-                <div class="setting-info">
-                    <div class="setting-icon"><i class="fas fa-moon"></i></div>
-                    <div><div style="font-weight:600">Mode Gelap</div><div style="font-size:11px;color:var(--text-muted)">Tampilan gelap</div></div>
-                </div>
-                <label class="switch"><input type="checkbox" checked onchange="toggleTheme(this)"><span class="slider"></span></label>
-            </div>
-            <div class="setting-item">
-                <div class="setting-info">
-                    <div class="setting-icon"><i class="fas fa-bell"></i></div>
-                    <div><div style="font-weight:600">Notifikasi</div><div style="font-size:11px;color:var(--text-muted)">Alert proses</div></div>
-                </div>
-                <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
-            </div>
-            <div class="setting-item">
-                <div class="setting-info">
-                    <div class="setting-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div><div style="font-weight:600">VPN Mode</div><div style="font-size:11px;color:var(--text-muted)">Sembunyikan IP</div></div>
-                </div>
-                <label class="switch"><input type="checkbox"><span class="slider"></span></label>
-            </div>
-        </div>
-
-        <!-- CONTENT -->
         <div class="content">
-          <!-- PROFILE IDENTITY CARD - FULL WIDTH -->
-<div class="identity-card" style="background:var(--card);border-radius:20px;padding:20px;border:1px solid var(--border);margin-bottom:20px;position:relative;overflow:hidden;">
-    <div style="position:absolute;top:0;right:0;width:200px;height:200px;background:linear-gradient(135deg,rgba(255,0,64,0.2),transparent);border-radius:0 0 0 100%;"></div>
-    
-    <div style="display:flex;align-items:center;gap:15px;position:relative;z-index:1;">
-        <div style="position:relative;flex-shrink:0;">
-            <div style="width:60px;height:60px;border-radius:50%;border:2px solid var(--primary);overflow:hidden;box-shadow:0 0 15px rgba(255,0,64,0.4);">
-                <img src="assets/images/avatar.jpg" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23ff0040%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2260%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>👑</text></svg>'">
-            </div>
-            <div style="position:absolute;bottom:0;right:0;width:18px;height:18px;background:var(--success);border-radius:50%;border:2px solid var(--card);display:flex;align-items:center;justify-content:center;">
-                <i class="fas fa-check" style="font-size:8px;color:white;"></i>
-            </div>
-        </div>
-        
-        <div style="flex:1;min-width:0;">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap;">
-                <h3 style="font-size:16px;margin:0;">OWN BOY</h3>
-                <span style="background:linear-gradient(45deg,#ff0040,#ff4080);color:white;padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700;white-space:nowrap;">OWNER</span>
-            </div>
-            <p style="font-size:11px;color:var(--text-muted);margin:0 0 6px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
-                <i class="fas fa-shield-alt" style="color:var(--primary);margin-right:5px;"></i>Supreme Developer
-            </p>
-            
-            <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                <div style="background:rgba(255,0,64,0.1);padding:3px 10px;border-radius:20px;font-size:9px;color:var(--primary);border:1px solid rgba(255,0,64,0.3);white-space:nowrap;">
-                    <i class="fas fa-code" style="margin-right:4px;"></i>Core77
-                </div>
-                <div style="background:rgba(0,255,136,0.1);padding:3px 10px;border-radius:20px;font-size:9px;color:var(--success);border:1px solid rgba(0,255,136,0.3);white-space:nowrap;">
-                    <i class="fas fa-terminal" style="margin-right:4px;"></i>Hacking
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div style="margin-top:15px;padding-top:15px;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr);gap:10px;position:relative;z-index:1;">
-        <div style="text-align:center;">
-            <div style="font-size:18px;font-weight:700;color:var(--primary);">∞</div>
-            <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase;">Access</div>
-        </div>
-        <div style="text-align:center;">
-            <div style="font-size:18px;font-weight:700;color:var(--success);">100%</div>
-            <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase;">Auth</div>
-        </div>
-        <div style="text-align:center;">
-            <div style="font-size:18px;font-weight:700;color:var(--info);">2050</div>
-            <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase;">Expired</div>
-        </div>
-    </div>
-
-    <div style="margin-top:12px;padding:10px;background:rgba(0,0,0,0.3);border-radius:10px;border-left:3px solid var(--primary);position:relative;z-index:1;">
-        <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">
-            <i class="fas fa-quote-left" style="color:var(--primary);margin-right:5px;font-size:8px;"></i>Bio
-        </div>
-        <p style="font-size:11px;color:var(--text);margin:0;line-height:1.4;font-style:italic;">
-            "larangan adalah perintah, hinaan adalah musibah."
-        </p>
-    </div>
-
-    <div style="margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;position:relative;z-index:1;">
-        <div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px;text-align:center;border:1px solid var(--border);">
-            <i class="fas fa-skull" style="color:var(--danger);font-size:14px;margin-bottom:3px;display:block;"></i>
-            <span style="font-size:9px;color:var(--text-muted);">Red Team</span>
-        </div>
-        <div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px;text-align:center;border:1px solid var(--border);">
-            <i class="fas fa-bug" style="color:var(--warning);font-size:14px;margin-bottom:3px;display:block;"></i>
-            <span style="font-size:9px;color:var(--text-muted);">Exploit</span>
-        </div>
-        <div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px;text-align:center;border:1px solid var(--border);">
-            <i class="fas fa-user-secret" style="color:var(--info);font-size:14px;margin-bottom:3px;display:block;"></i>
-            <span style="font-size:9px;color:var(--text-muted);">Anon</span>
-        </div>
-    </div>
-</div>
-
-            <!-- STATS -->
             <div class="stats" id="main-stats">
                 <div class="stat-box"><i class="fas fa-ban"></i><h3 id="stat-bans">0</h3><p>Total Banned</p></div>
                 <div class="stat-box"><i class="fas fa-check-circle"></i><h3 id="stat-unbans">0</h3><p>Unban Success</p></div>
-                <div class="stat-box"><i class="fas fa-percentage"></i><h3 id="stat-rate">98%</h3><p>Success Rate</p></div>
+                <div class="stat-box"><i class="fas fa-percentage"></i><h3>98%</h3><p>Success Rate</p></div>
             </div>
 
-            <!-- MENU -->
             <div class="menu-grid" id="main-menu">
-              
-              
                 <div class="menu-item" onclick="showSection('tools')">
                     <div class="menu-icon" style="background:linear-gradient(135deg,#ff0040,#ff4080)"><i class="fas fa-tools"></i></div>
                     <h3>TOOLS</h3>
@@ -332,6 +151,78 @@
                 </div>
             </div>
 
+            <!-- IDENTITY CARD -->
+            <div class="identity-card">
+                <div style="display:flex;align-items:center;gap:15px;position:relative;z-index:1;">
+                    <div style="position:relative;flex-shrink:0;">
+                        <div style="width:60px;height:60px;border-radius:50%;border:2px solid var(--primary);overflow:hidden;box-shadow:0 0 15px rgba(255,0,64,0.4);">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=OWNBOY" style="width:100%;height:100%;object-fit:cover;">
+                        </div>
+                        <div style="position:absolute;bottom:0;right:0;width:18px;height:18px;background:var(--success);border-radius:50%;border:2px solid var(--card);display:flex;align-items:center;justify-content:center;">
+                            <i class="fas fa-check" style="font-size:8px;color:white;"></i>
+                        </div>
+                    </div>
+                    
+                    <div style="flex:1;min-width:0;">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap;">
+                            <h3 style="font-size:16px;margin:0;">OWN BOY</h3>
+                            <span style="background:linear-gradient(45deg,#ff0040,#ff4080);color:white;padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700;white-space:nowrap;">OWNER</span>
+                        </div>
+                        <p style="font-size:11px;color:var(--text-muted);margin:0 0 6px 0;">
+                            <i class="fas fa-shield-alt" style="color:var(--primary);margin-right:5px;"></i>Supreme Developer
+                        </p>
+                        
+                        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                            <div style="background:rgba(255,0,64,0.1);padding:3px 10px;border-radius:20px;font-size:9px;color:var(--primary);border:1px solid rgba(255,0,64,0.3);">
+                                <i class="fas fa-code" style="margin-right:4px;"></i>Core77
+                            </div>
+                            <div style="background:rgba(0,255,136,0.1);padding:3px 10px;border-radius:20px;font-size:9px;color:var(--success);border:1px solid rgba(0,255,136,0.3);">
+                                <i class="fas fa-terminal" style="margin-right:4px;"></i>DarkSeek
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:15px;padding-top:15px;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr);gap:10px;position:relative;z-index:1;">
+                    <div style="text-align:center;">
+                        <div style="font-size:18px;font-weight:700;color:var(--primary);">∞</div>
+                        <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase;">Access</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-size:18px;font-weight:700;color:var(--success);">100%</div>
+                        <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase;">Auth</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-size:18px;font-weight:700;color:var(--info);">2050</div>
+                        <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase;">Expired</div>
+                    </div>
+                </div>
+
+                <div style="margin-top:12px;padding:10px;background:rgba(0,0,0,0.3);border-radius:10px;border-left:3px solid var(--primary);position:relative;z-index:1;">
+                    <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">
+                        <i class="fas fa-quote-left" style="color:var(--primary);margin-right:5px;font-size:8px;"></i>Bio
+                    </div>
+                    <p style="font-size:11px;color:var(--text);margin:0;line-height:1.4;font-style:italic;">
+                        "Master of chaos, architect of systems. Breaking limits since day one."
+                    </p>
+                </div>
+
+                <div style="margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;position:relative;z-index:1;">
+                    <div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px;text-align:center;border:1px solid var(--border);">
+                        <i class="fas fa-skull" style="color:var(--danger);font-size:14px;margin-bottom:3px;display:block;"></i>
+                        <span style="font-size:9px;color:var(--text-muted);">Red Team</span>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px;text-align:center;border:1px solid var(--border);">
+                        <i class="fas fa-bug" style="color:var(--warning);font-size:14px;margin-bottom:3px;display:block;"></i>
+                        <span style="font-size:9px;color:var(--text-muted);">Exploit</span>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px;text-align:center;border:1px solid var(--border);">
+                        <i class="fas fa-user-secret" style="color:var(--info);font-size:14px;margin-bottom:3px;display:block;"></i>
+                        <span style="font-size:9px;color:var(--text-muted);">Anon</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- TOOLS SECTION -->
             <div id="tools-section" class="tools-section" style="display:none">
                 <button class="btn-back" onclick="backToMain()"><i class="fas fa-arrow-left"></i> Kembali</button>
@@ -341,7 +232,6 @@
                     <button class="tool-tab" onclick="switchTool('unban')" id="tab-unban"><i class="fas fa-unlock"></i> UNBAN</button>
                 </div>
 
-                <!-- BAN FORM -->
                 <div id="form-ban" class="form-area active">
                     <div class="input-group">
                         <label>Target Number</label>
@@ -361,25 +251,11 @@
                         <button class="method-btn" onclick="selectMethod(this,'child')"><i class="fas fa-child"></i><span>Priority</span></button>
                     </div>
 
-                    <button class="btn-" onclick="Ban()" id="btn-ban"><i class="fas fa-rocket"></i>  BAN</button>
-
-<div class="video-container">
-    <video class="anime-video" autoplay loop muted playsinline>
-        <!-- GANTI INI DENGAN FILE LOKAL LU -->
-        <source src="assets/videos/anime.mp4" type="video/mp4">
-        <!-- Fallback kalau file ga ketemu -->
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-network-connections-27611-large.mp4" type="video/mp4">
-    </video>
-    <div class="video-overlay">
-        <h4><i class="fas fa-play-circle"></i> System Active</h4>
-        <p>Monitoring target...</p>
-    </div>
-</div>
-
+                    <button class="btn-execute" onclick="executeBan()" id="btn-ban"><i class="fas fa-rocket"></i> EXECUTE BAN</button>
 
                     <div class="progress-area" id="ban-progress">
                         <div class="progress-header">
-                            <div class="progress-title"><i class="fas fa-circle-notch"></i> Attacking...</div>
+                                                        <div class="progress-title"><i class="fas fa-circle-notch"></i> Attacking...</div>
                             <div class="progress-percent" id="ban-percent">0%</div>
                         </div>
                         <div class="progress-bar"><div class="progress-fill" id="ban-bar"></div></div>
@@ -601,4 +477,6 @@ async function executeBan() {
     </script>
 
 </body>
-</html>
+    </html>
+
+            
